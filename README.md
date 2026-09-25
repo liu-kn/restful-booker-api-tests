@@ -1,0 +1,13 @@
+# Restful-Booker API Tests
+
+Automated API tests for [Restful-Booker](https://restful-booker.herokuapp.com)
+written in Python with pytest and requests.
+
+## Tech stack
+- Python 3.11
+- pytest
+- requests
+
+## How to run
+pip install -r requirements.txt
+pytest -v
