@@ -1,4 +1,6 @@
 import requests
+import pytest
+
 
 
 ### POST
@@ -26,3 +28,10 @@ def test_create_booking(api_base_url):
     response = requests.get(api_base_url + "/booking/" +  str(booking_id))
     assert response.status_code == 200
     assert response.json() == new_booking
+
+
+@pytest.mark.xfail(reason="Bug: API returns 500 instead of 400 for empty body")
+def test_create_booking_empty_body(api_base_url):
+    response = requests.post(api_base_url + "/booking", json={})
+    print(response.status_code)
+    assert response.status_code == 400

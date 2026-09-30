@@ -24,8 +24,8 @@ def test_get_booking_ids(api_base_url):
     for booking in bookings:
         assert "bookingid" in booking
 
-#
-# # test 3 ОДНО БРОНИРОВАНИЕ
+
+### test 3 ОДНО БРОНИРОВАНИЕ
 def test_get_booking_by_id(api_base_url):
     response = requests.get(api_base_url + "/booking/2")
     assert response.status_code == 200
@@ -42,3 +42,7 @@ def test_get_booking_by_id(api_base_url):
     for key in expected_keys:
         assert key in booking       # assert что in где
 
+
+def test_get_booking_not_found(api_base_url):
+    response = requests.get(api_base_url + "/booking/99999999")
+    assert response.status_code == 404
